@@ -1,0 +1,21 @@
+services:
+    lead_ext.wysiwyg_editor.form.extension.type.product_translation:
+        class: 'LeadExt\WysiwygEditorPlugin\Form\Extension\ProductTranslationTypeExtension'
+        tags:
+            - { name: 'form.type_extension', extended_type: 'Sylius\Bundle\ProductBundle\Form\Type\ProductTranslationType', priority: -100 }
+
+    lead_ext.wysiwyg_editor.block_event_listener.admin.product.update.tab_details:
+        class: 'Sylius\Bundle\UiBundle\Block\BlockEventListener'
+        arguments:
+            - '@@LeadExtWysiwygEditorPlugin/wysiwyg.html.twig'
+        tags:
+            - { name: kernel.event_listener, event: 'sonata.block.event.sylius.admin.product.update.tab_details', method: 'onBlockEvent' }
+            - { name: kernel.event_listener, event: 'sonata.block.event.sylius.admin.product.create.tab_details', method: 'onBlockEvent' }
+
+    lead_ext.wysiwyg_editor.twig.extension:
+        class: 'LeadExt\WysiwygEditorPlugin\Twig\Extension\WysiwygExtension'
+        arguments:
+            - '%lead_ext_wysiwyg_editor.config%'
+            - '%lead_ext_wysiwyg_editor.api_key%'
+        tags:
+            - { name: 'twig.extension', alias: 'lead_ext_wysiwyg' }

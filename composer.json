@@ -1,0 +1,16 @@
+{
+  "name": "lead-ext/wysiwyg-editor-plugin",
+  "type": "sylius-bundle",
+  "description": "WYSIWYG editor for Sylius.",
+  "authors": [
+    {
+      "name": "Oleksandr Kurakin"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "sylius/sylius": "dev-master"
+  },
+  "license": "MIT",
+  "homepage": "http://lead-ext.com"
+}
