@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace LeadExt\WysiwygEditorPlugin\Form\Extension;
 
+use LeadExt\WysiwygEditorPlugin\Form\TextWysiwygType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductTranslationType;
 use Symfony\Component\Form\AbstractTypeExtension;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class ProductTranslationTypeExtension extends AbstractTypeExtension
@@ -19,19 +19,13 @@ final class ProductTranslationTypeExtension extends AbstractTypeExtension
         $builder
             ->remove('description')
             ->remove('shortDescription')
-            ->add('description', TextareaType::class, [
+            ->add('description', TextWysiwygType::class, [
                 'required' => false,
                 'label' => 'sylius.form.product.description',
-                'attr' => [
-                    'class' => 'tinymce'
-                ],
             ])
-            ->add('shortDescription', TextareaType::class, [
+            ->add('shortDescription', TextWysiwygType::class, [
                 'required' => false,
                 'label' => 'sylius.form.product.short_description',
-                'attr' => [
-                    'class' => 'tinymce'
-                ],
             ]);
     }
 
@@ -43,4 +37,3 @@ final class ProductTranslationTypeExtension extends AbstractTypeExtension
         return ProductTranslationType::class;
     }
 }
-

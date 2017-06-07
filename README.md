@@ -35,20 +35,15 @@ By default plugin adds text editor for product's description and short descripti
     ```
     Please check official documentation for all available options: https://www.tinymce.com/docs/
     
-4. add class `tynimce` for form types:
-    - via PHP 
+4. Use `TextWysiwygType` form type for your field:
     ```php
-    $builder
-        ->add('description', TextareaType::class, [
-            'attr' => [
-                'class' => 'tinymce'
-            ],
-        ]);
-    ```
-
-    - or twig:
-    ```twig
-    {{ form_row(form.description, { attr: { class: 'tinymce' } }) }}
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('text', TextWysiwygType::class, [
+                'required' => false,
+            ])
+    }
     ```
 
 ## Manual steps:
